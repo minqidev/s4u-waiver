@@ -10,18 +10,21 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { NewFirearmsPage } from '../pages/new-firearms/new-firearms';
 
+import { HttpClientModule } from '@angular/common/http';
+import { CaliberListPage } from '../pages/caliber-list/caliber-list';
 @NgModule({
   declarations: [
     MyApp,
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage, NewFirearmsPage, CaliberListPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp,{mode:"ios"}), HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -29,7 +32,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,NewFirearmsPage, CaliberListPage
   ],
   providers: [
     StatusBar,
