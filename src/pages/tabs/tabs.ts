@@ -12,7 +12,11 @@ export class TabsPage {
   tab1Root = HomePage;
   tab2Root = AboutPage;
   tab3Root = ContactPage;
+<<<<<<< HEAD
 
+=======
+  tab4Root = ContactPage;
+>>>>>>> 31de3156d6bf04aa0e35a8b3ec6a88ae92809c2d
   constructor() {
 
   }
