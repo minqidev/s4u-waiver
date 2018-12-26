@@ -24,7 +24,7 @@ import { CaliberListPage } from '../pages/caliber-list/caliber-list';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp,{mode:"ios"}), HttpClientModule
+    IonicModule.forRoot(MyApp), HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -15,8 +15,8 @@
       <ion-segment-button value="info">
         Basic
       </ion-segment-button>
-      <ion-segment-button value="assessories">
-        Assessories
+      <ion-segment-button value="record">
+        Record
       </ion-segment-button>
       <ion-segment-button value="maintain">
         Maintain
@@ -30,37 +30,37 @@
 
 
 
-<ion-content>
+<ion-content [hidden]='segment != "info"'>
   <ion-item>
-    <ion-label> Label</ion-label>
+    <ion-label color="dark"> Label</ion-label>
     <ion-input text-right type="" (ionFocus)="setSearchInput('label')" [(ngModel)]="item.label"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label> Barcode</ion-label>
+    <ion-label color="dark"> Barcode</ion-label>
     <ion-input text-right type="" (ionFocus)="setSearchInput('barcode')" [(ngModel)]="item.barcode"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label> SKU</ion-label>
+    <ion-label color="dark"> SKU</ion-label>
     <ion-input text-right type="" (ionFocus)="setSearchInput('sku')" [(ngModel)]="item.sku"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label> Serial</ion-label>
+    <ion-label color="dark"> Serial</ion-label>
     <ion-input text-right type="" (ionFocus)="setSearchInput('serial')" [(ngModel)]="item.serial"></ion-input>
   </ion-item>
 
   <button ion-item (click)="showCaliberList('mfg')">
-    <ion-label> Manufacturer</ion-label>
+    <ion-label color="dark"> Manufacturer</ion-label>
     <ion-label item-right text-right> {{item.manufacturer}}</ion-label>
   </button>
   <ion-item>
-    <ion-label> Model</ion-label>
+    <ion-label color="dark"> Model</ion-label>
     <ion-input text-right [(ngModel)]="item.model" (ionFocus)="setSearchInput('model')" ></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label>Type</ion-label>
-    <ion-select [(ngModel)]="item.type" interface="action-sheet" (ionFocus)="setSearchInput('type')" >
+    <ion-label color="dark">Type</ion-label>
+    <ion-select [(ngModel)]="item.type"  (ionFocus)="setSearchInput('type')" >
       <ion-option value="Other">Other</ion-option>
       <ion-option value="pistol">Pistol</ion-option>
       <ion-option value="revolver">Revolver</ion-option>
@@ -72,22 +72,22 @@
     </ion-select>
   </ion-item>
   <button ion-item (click)="showCaliberList()">
-    <ion-label> Caliber</ion-label>
+    <ion-label color="dark"> Caliber</ion-label>
     <ion-label item-right text-right> {{item.caliber}}</ion-label>
   </button>
 
   <ion-item>
-    <ion-label>Class III</ion-label>
+    <ion-label color="dark">Class III</ion-label>
     <ion-checkbox item-end [(ngModel)]="item.classIII" (ionFocus)="setSearchInput('classIII')" ></ion-checkbox>
   </ion-item>
 
 
-  <ion-item>
-    <ion-label>C&R</ion-label>
+  <ion-item >
+    <ion-label color="dark">C&R</ion-label>
     <ion-checkbox item-end [(ngModel)]="item.candr" (ionFocus)="setSearchInput('canr')" ></ion-checkbox>
   </ion-item>
   <ion-item>
-      <ion-label>Condition</ion-label>
+      <ion-label color="dark"> Condition</ion-label>
       <ion-select [(ngModel)]="item.type" (ionFocus)="setSearchInput('condition')" >
   
         <ion-option value="brand_new">Brand New</ion-option>
@@ -102,3 +102,68 @@
     </ion-item>
 </ion-content>
 
+<ion-content [hidden]="segment!='record'">
+  <ion-item-divider>
+    ACQUISTION RECORD
+  </ion-item-divider>
+  <ion-item>
+    <ion-label  color="dark">Purchase From</ion-label>
+    <ion-input type="" text-right [(ngModel)]="item.purchaseFrom"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label  color="dark" >Purchase Date</ion-label>
+    <ion-input type="" text-right  [(ngModel)]="item.purchaseDate"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label  color="dark" >Purchase At</ion-label>
+    <ion-input type="" text-right  [(ngModel)]="item.purchaseAt"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label  color="dark" >Purchase Price</ion-label>
+    <ion-input type=""  text-right  [(ngModel)]="item.purchasePrice"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label  color="dark" >Purchase Note</ion-label>
+    <ion-textarea type=""  text-right  [(ngModel)]="item.purchaseNote"></ion-textarea>
+    
+  </ion-item>
+  <ion-item-divider>
+      DISPOSITION RECORD
+    </ion-item-divider>
+    <ion-item>
+      <ion-label  color="dark">Sell To</ion-label>
+      <ion-input type="" text-right  [(ngModel)]="item.sellTo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  color="dark" >Sell Date</ion-label>
+      <ion-input type="" text-right  [(ngModel)]="item.sellDate"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  color="dark" >Sell At</ion-label>
+      <ion-input type="" text-right  [(ngModel)]="item.sellDate"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  color="dark" >Sell Price</ion-label>
+      <ion-input type=""  text-right  [(ngModel)]="item.sellPrice"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  color="dark" >Sell Note</ion-label>
+      <ion-textarea type=""  text-right  [(ngModel)]="item.sellNote"></ion-textarea>
+      
+    </ion-item>
+</ion-content>
+
+<ion-content [hidden]="segment != 'maintain'">
+  <ion-item>
+    <ion-label color="dark">Last Cleaned Date</ion-label>
+    <ion-input type=""  [(ngModel)]="item.lastCleanedDate"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="dark">Last Fired Date</ion-label>
+    <ion-input type=""  [(ngModel)]="item.lastFiredDate"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="dark">Last Fired Rounds</ion-label>
+    <ion-input type=""  [(ngModel)]="item.lastFiredRounds"></ion-input>
+  </ion-item>
+</ion-content>

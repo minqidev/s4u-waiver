@@ -1,6 +1,8 @@
 {
   "name": "s4u-waiver",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular",
   "id": "b6178abf"
 }

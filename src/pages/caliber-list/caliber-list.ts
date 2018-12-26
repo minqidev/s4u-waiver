@@ -19,33 +19,70 @@ export class CaliberListPage {
   calibers_temp: any[] = [];
   selectCaliber: string = "";
   oldCaliber: string = "";
-  seachText: string = "";
-  title:string;
+  searchText: string = "";
+  title: string;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     //console.log(JSON.stringify(this.navParams.get("calibers")));
     this.calibers = this.navParams.get("calibers");
-    this.calibers_temp = this.calibers;
+
+    this.calibers_temp = [];
     this.selectCaliber = this.navParams.get("caliber");
     this.oldCaliber = this.navParams.get("caliber");
     this.callback = this.navParams.get("callback");
     this.title = this.navParams.get("title");
+
+    this.updateList();
   }
 
   ionViewDidLoad() {
-    
+
+  }
+
+  checkAddNewButton() {
+
   }
 
   updateList() {
+    while (this.calibers_temp.length > 0) {
+      this.calibers_temp.pop();
+    }
+    console.log("search text is " + this.searchText.length);
+    if (this.searchText.length < 2) {
+      var index = 0;
+      this.calibers.forEach(c => {
+        index++;
+        if(index<30 && c.trim() != ''){
+          this.calibers_temp.push(c);
 
+        } else {
+          return;
+        }
+        
+
+      });
+
+
+      return;
+    }
+
+    var index = 0;
+    this.calibers.forEach(c => {
+      if (index < 30 && c.replace(/([ .×])/g, "").toLowerCase().includes(this.searchText.replace(/([ .×])/g, "").toLowerCase())) {
+        index++;
+
+        this.calibers_temp.push(c);
+
+      }
+    });
   }
 
   isValidate(c: string, st: string) {
     if (st == null) {
-      return true;
+      return false;
     }
 
     if (st.length < 2) {
-      return true;
+      return false;
     }
 
     if (c.replace(/([ .×])/g, "").toLowerCase().includes(st.replace(/([ .×])/g, "").toLowerCase())) {
@@ -65,7 +102,7 @@ export class CaliberListPage {
           temp.navCtrl.pop();
         }, 500);
 
-        
+
       });
     }
 

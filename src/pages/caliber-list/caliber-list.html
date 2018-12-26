@@ -9,15 +9,19 @@
   <ion-navbar>
     <ion-title>{{title}}</ion-title>
   </ion-navbar>
-  <ion-searchbar [(ngModel)]="searchText" ></ion-searchbar>
+  <ion-searchbar [(ngModel)]="searchText" (ionInput)="updateList()"></ion-searchbar>
 </ion-header>
 
 
 <ion-content>
+  <button color="primary" ion-item [hidden]="searchText.length == 0">
+    Add - {{searchText}}
+  </button>
   <ion-list radio-group [(ngModel)]="selectCaliber" (ionChange)="caliberChanged()">
    
-    <div *ngFor="let c of calibers">
-        <ion-item [hidden]="!isValidate(c, searchText)">
+      
+    <div *ngFor="let c of calibers_temp">
+        <ion-item>
             <ion-label>{{c}}</ion-label>
             <ion-radio checked="c==selectCaliber" value="{{c}}"></ion-radio>
           </ion-item>

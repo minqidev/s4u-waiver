@@ -49,9 +49,15 @@ export class NewFirearmsPage {
     });
 
 
-    httpClient.get("/assets/2.txt", {}).subscribe((res: []) => {
-      temp.mfgs = res;
-      console.log(temp.mfgs.length);
+    httpClient.get("/assets/2.txt", {}).subscribe((res: any[][]) => {
+      temp.mfgs = [];
+      //console.log((res[0][0]));
+      res.forEach((element:any[]) => {
+        //if(element[0].length > 0)
+        temp.mfgs.push(element[0])
+      });
+
+      //console.log(JSON.stringify(temp.mfgs));
     });
 
   }
@@ -122,6 +128,7 @@ export class NewFirearmsPage {
 }
 
 export class item {
+  public uid:string;
   public label: string;
   public barcode:string;
   public sku: string;
@@ -130,9 +137,24 @@ export class item {
   public model: string;
   public type: string;
   public caliber: string;
-  public classsIII: boolean;
+  public classIII: boolean;
   public candr: boolean;
   public condition: string;
   public note: string;
 
+  public purchaseFrom: string;
+  public purchaseDate: Date;
+  public purchaseAt:string;
+  public purchasePrice:number;
+  public purchaseNote:string;
+
+  public sellTo:string;
+  public sellDate:Date;
+  public sellAt:string;
+  public sellPrice:number;
+  public sellNote:string;
+
+  public lastCleanedDate:Date;
+  public lastFiredDate:Date;
+  public lastFiredRounds:number;
 }
