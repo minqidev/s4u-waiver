@@ -7,7 +7,18 @@
 <ion-header>
 
   <ion-navbar color="danger">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="closePage()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>NewFirearms</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only>
+        <ion-icon name="icon-save"></ion-icon>
+      </button>
+    </ion-buttons>
+    
   </ion-navbar>
   <ion-toolbar color="danger">
 
@@ -38,7 +49,10 @@
 
   <ion-item>
     <ion-label color="dark"> Barcode</ion-label>
-    <ion-input text-right type="" (ionFocus)="setSearchInput('barcode')" [(ngModel)]="item.barcode"></ion-input>
+    <ion-input text-right type=""  [disabled]='true' (ionFocus)="setSearchInput('barcode')" [(ngModel)]="item.barcode"></ion-input>
+    <button ion-button color="danger"  item-right icon-only>
+      <ion-icon name="barcode"></ion-icon>
+    </button>
   </ion-item>
   <ion-item>
     <ion-label color="dark"> SKU</ion-label>
@@ -79,12 +93,6 @@
   <ion-item>
     <ion-label color="dark">Class III</ion-label>
     <ion-checkbox item-end [(ngModel)]="item.classIII" (ionFocus)="setSearchInput('classIII')" ></ion-checkbox>
-  </ion-item>
-
-
-  <ion-item >
-    <ion-label color="dark">C&R</ion-label>
-    <ion-checkbox item-end [(ngModel)]="item.candr" (ionFocus)="setSearchInput('canr')" ></ion-checkbox>
   </ion-item>
   <ion-item>
       <ion-label color="dark"> Condition</ion-label>

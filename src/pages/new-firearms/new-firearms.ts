@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { CaliberListPage } from '../caliber-list/caliber-list';
 /**
@@ -24,7 +24,9 @@ export class NewFirearmsPage {
   mfgs: any[] = [];
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient) {
+  constructor(public navCtrl: NavController, 
+    public viewCtrl:ViewController,
+    public navParams: NavParams, public httpClient: HttpClient) {
     var temp = this;
     httpClient.get("/assets/1.txt", { responseType: 'text' }).subscribe((res) => {
 
@@ -123,6 +125,10 @@ export class NewFirearmsPage {
 
 
     this.navCtrl.push(CaliberListPage, { "title":"Caliber","calibers": this.calibers, "caliber": this.item.caliber, "callback": myCallbackFunction });
+  }
+
+  closePage(){
+    this.viewCtrl.dismiss();
   }
 
 }
